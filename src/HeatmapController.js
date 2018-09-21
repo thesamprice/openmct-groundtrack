@@ -40,7 +40,7 @@ define([], function () {
         ['x', 'y', 'counts'].forEach(function (property) {
             var idParts = domainObject[property].split(":");
             var identifier = idParts.length > 1 ?
-                { namespace: idParts[0], key: idParts[1] } : idParts[0];
+                { namespace: idParts[0], key: idParts[1], type:"example.telemetry" } : idParts[0];
             requests.push(this.openmct.objects.get(identifier).then(function (obj) {
                 this.metadata[property] = this.openmct.telemetry.getMetadata(obj);
                 this.unsubscribes.push(this.openmct.telemetry.subscribe(
